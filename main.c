@@ -6,7 +6,6 @@
 #include <sys/wait.h>
 
 int main(){
-
     int statusQ, statusP, statusR, statusI, statusM;
     int statusA, statusV, statusE, statusr, statusa;
 

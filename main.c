@@ -1,3 +1,4 @@
+// Eduardo Rodriguez
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +7,6 @@
 
 int main()
 {
-
     int i=0, j, k;
     int statusQ, statusP, statusR, statusI, statusM;
     int statusA, statusV, statusE, statusr, statusa;
@@ -27,7 +27,6 @@ int main()
                     printf("I   %d  %d\n", getpid(), getppid());
                 }
             }
-            
         }
         else{// Q
             waitpid(pid_I, &statusI, 0);

@@ -15,14 +15,14 @@ int main(){
     if( (pid_Q = fork()) == 0){ // se crea Q
         if((pid_I=fork()) == 0){// I
             if((pid_P = fork()) == 0){
-                printf("\t    P   %d   %d     \n", getpid(), getppid());
+                printf("\t|    P   %d   %d   |\n", getpid(), getppid());
             }else{
+                waitpid(pid_P, &statusP, 0);
                 if((pid_R = fork()) == 0){
-                    waitpid(pid_P, &statusP, 0);
-                    printf("\t    R   %d   %d     \n", getpid(), getppid());
+                    printf("\t|    R   %d   %d   |\n", getpid(), getppid());
                 }else{
                     waitpid(pid_R, &statusR, 0);
-                    printf("\t    I   %d   %d     \n", getpid(), getppid());
+                    printf("\t|    I   %d   %d   |\n", getpid(), getppid());
                 }
             }
         }
@@ -30,33 +30,33 @@ int main(){
             waitpid(pid_I, &statusI, 0);
             if((pid_A = fork()) == 0){ // se crea A
                 if((pid_M = fork()) == 0){
-                    printf("\t    M   %d   %d     \n", getpid(), getppid());
+                    printf("\t|    M   %d   %d   |\n", getpid(), getppid());
                 }else{// A
                     waitpid(pid_M, &statusM, 0);
-                    printf("\t    A   %d   %d     \n", getpid(), getppid());
+                    printf("\t|    A   %d   %d   |\n", getpid(), getppid());
                 }
             }else{// Q
                 waitpid(pid_A, &statusA, 0);
                 if((pid_a = fork()) == 0){
                     if((pid_V = fork()) == 0){// se crea V
-                        printf("\t    V   %d   %d     \n", getpid(), getppid());
+                        printf("\t|    V   %d   %d   |\n", getpid(), getppid());
                     }else{
                         waitpid(pid_V, &statusV, 0);
                         if((pid_r = fork()) == 0){
                             if((pid_E = fork()) == 0){
-                                printf("\t    E   %d   %d     \n", getpid(), getppid());
+                                printf("\t|    E   %d   %d   |\n", getpid(), getppid());
                             }else{
                                 waitpid(pid_E, &statusE, 0);
-                                printf("\t    r   %d   %d     \n", getpid(), getppid());
+                                printf("\t|    r   %d   %d   |\n", getpid(), getppid());
                             }
                         }else{
                             waitpid(pid_r, &statusr, 0);
-                            printf("\t    a   %d   %d     \n", getpid(), getppid());
+                            printf("\t|    a   %d   %d   |\n", getpid(), getppid());
                         }
                     }
                 }else{
                     waitpid(pid_a, &statusa, 0);
-                    printf("\t    @   %d   %d     \n", getpid(), getppid());
+                    printf("\t|    @   %d   %d   |\n", getpid(), getppid());
                 }
             }
         }
@@ -68,7 +68,7 @@ int main(){
         printf("\t------------------------\n");
         waitpid(pid_Q, &statusQ, 0);
         printf("\t------------------------\n");
-        printf("\t    Terminado           \n");
+        printf("\t|    Terminado         |\n");
         printf("\t------------------------\n");
         printf("\n");
         printf("\033[0;30;40m");
